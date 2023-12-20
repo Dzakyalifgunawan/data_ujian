@@ -1,11 +1,3 @@
-let tanggal = new Date();
-let tgl_hari = tanggal.getDay();
-let tgl_bulan = tanggal.getMonth();
-let tgl_tahun = tanggal.getFullYear();
-let tampil_tanggal = tgl_hari + "/" + tgl_bulan + "/" + tgl_tahun;
-
-document.getElementById("tanggal").innerHTML = tampil_tanggal;
-
 document.getElementById('tambah').onclick = function() {
     // Mendapatkan nilai input
     let namaLengkap = document.getElementById('nama').value;
@@ -26,9 +18,17 @@ document.getElementById('tambah').onclick = function() {
     let siswabaru = "SB";
     let beasiswa = "BS";
     let kemerdekaan = "KM";
+
+    function tambahnol(param){
+      if(param < 10){
+        param = "0" + param;
+      }
+      return param;
+    }
+
     let tanggal = new Date();
-    let tgl_hari = tanggal.getDay();
-    let tgl_bulan = tanggal.getMonth();
+    let tgl_hari = tambahnol(tanggal.getDate());
+    let tgl_bulan = tanggal.getMonth() + 1;
     let tgl_tahun = tanggal.getFullYear();
     let tampil_sb = siswabaru + tgl_tahun + tgl_bulan + tgl_hari + karakterDepan + karakterBelakang; 
     let tampil_bs = beasiswa + tgl_tahun + tgl_bulan + tgl_hari + karakterDepan + karakterBelakang;
@@ -39,6 +39,7 @@ document.getElementById('tambah').onclick = function() {
     document.getElementById('sb').innerHTML = tampil_sb;
     document.getElementById('bs').innerHTML = tampil_bs;
     document.getElementById('km').innerHTML = tampil_km;
+
     clear();
 }
 
